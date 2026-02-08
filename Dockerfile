@@ -1,24 +1,24 @@
 # Dockerfile
 
-# 使用官方的 Python 基础镜像
-FROM python:3.10-slim
+# Use official Python 3.12 base image
+FROM python:3.12-slim
 
-# 设置工作目录
+# Set working directory
 WORKDIR /app
 
-# 复制 requirements.txt 并安装依赖
+# Copy requirements.txt and install dependencies
 COPY requirements.txt .
 
-# 安装 Python 依赖
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 复制项目的所有文件到容器
+# Copy all project files to container
 COPY . .
 
-# 复制并执行 validate_tests.sh 脚本
+# Copy and execute validate_tests.sh script
 COPY validate_tests.sh .
 RUN chmod +x validate_tests.sh
 RUN ./validate_tests.sh
 
-# 设置容器入口
+# Set container entry point
 CMD ["python", "src/daemon_process.py"]
