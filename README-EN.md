@@ -194,6 +194,18 @@ python src/gradio_server.py
 - This will start a web server on your machine, allowing you to manage subscriptions and generate reports through a user-friendly interface.
 - By default, the Gradio server will be accessible at `http://localhost:7860`, but it can be shared publicly if needed.
 
+## Python Version
+
+This project requires Python 3.12 or higher. It has been tested with Python 3.12.x and all dependencies are compatible.
+
+### Upgrading from Python 3.10
+
+If you're upgrading from a previous version:
+
+1. Create a new virtual environment with Python 3.12
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run tests to verify: `./validate_tests.sh`
+
 ## Ollama Installation and Service Deployment
 
 Ollama is a private large model management tool that supports local and containerized deployment, command-line interaction, and REST API calls.
@@ -264,7 +276,7 @@ To facilitate building and deploying the GitHub Sentinel project in various envi
 The `Dockerfile` is a configuration file used to define how to build a Docker image. It describes the steps to build the image, including installing dependencies, copying project files, running unit tests, etc.
 
 #### Key Steps
-- Use `python:3.10-slim` as the base image and set the working directory to `/app`.
+- Use `python:3.12-slim` as the base image and set the working directory to `/app`.
 - Copy the project's `requirements.txt` file and install Python dependencies.
 - Copy all project files to the container and grant execution permission to the `validate_tests.sh` script.
 - During the build process, execute the `validate_tests.sh` script to ensure that all unit tests pass. If the tests fail, the build process will be aborted.
